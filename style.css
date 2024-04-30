@@ -1,0 +1,139 @@
+body {
+  line-height: 1.5;
+  font-family: sans-serif;
+}
+:root {
+  --color-1: blueviolet;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-container {
+  margin: auto;
+  max-width: 1170px;
+  /* width: 100%; */
+}
+.header a {
+  text-decoration: none;
+}
+.nav-tabs {
+  list-style: none;
+}
+.nav-container .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  background-color: var(--color-1);
+  padding: 12px 0;
+  position: relative;
+}
+.nav-tabs .nav-tab {
+  display: inline-block;
+  margin-left: 40px;
+}
+.header .nav,
+.header .logo {
+  padding: 0 10px;
+}
+.header .logo a {
+  font-size: 30px;
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: 900;
+}
+.nav-tab a {
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 0;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: capitalize;
+  transition: all 0.5s ease;
+}
+.nav-tabs .nav-tab a:active,
+.nav-tabs .nav-tab a:hover {
+  color: #ffffff;
+}
+.header #nav-check{
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+}
+.nav-toggler {
+  width: 35px;
+  height: 35px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+.nav-toggler span {
+  display: block;
+  height: 2px;
+  width: 25px;
+  background-color: var(--color-1);
+  position: relative;
+}
+.nav-toggler span::after,
+.nav-toggler span::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-1);
+  left: 0;
+}
+.nav-toggler span::before {
+  top: -6px;
+}
+.nav-toggler span::after {
+  top: 6px;
+}
+
+@media (max-width: 768px) {
+  .nav-toggler {
+    display: flex;
+  }
+  .header .nav {
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    width: 100%;
+    background-color: var(--color-1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .nav-tabs {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  .header #nav-check:checked ~ .nav {
+    opacity: 1;
+    visibility: visible;
+  }
+  .header #nav-check:focus ~ .nav-toggler {
+    box-shadow: 0 0 15px #252525;
+  }
+  .header #nav-check:checked ~ .nav-toggler span {
+    background-color: transparent;
+  }
+  .header #nav-check:checked ~ .nav-toggler span::after {
+    top: 0;
+    transform: rotate(45deg);
+  }
+  .header #nav-check:checked ~ .nav-toggler span::before {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+}
